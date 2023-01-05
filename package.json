@@ -12,7 +12,7 @@
     ]
   },
   "dependencies": {
-    "@webkrafters/react-observable-context": "^4.0.0-alpha.6s",
+    "@webkrafters/react-observable-context": "^4.0.0-rc.0",
     "cra-template": "1.2.0",
     "lodash.isempty": "^4.4.0",
     "react": "16.8.0",
