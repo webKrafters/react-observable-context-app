@@ -1,6 +1,8 @@
-import React from 'react';
-
-import { createContext, useContext } from '@webkrafters/react-observable-context';
+import {
+	createContext,
+	useContext
+} from '@webkrafters/react-observable-context';
+// } from 'react-eagleeye';
 
 const ObservableContext = createContext();
 

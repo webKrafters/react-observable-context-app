@@ -1,4 +1,9 @@
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import React, {
+	useCallback,
+	useLayoutEffect,
+	useRef,
+	useState
+} from 'react';
 
 import Hoc from './hoc';
 import Memo from './memo';

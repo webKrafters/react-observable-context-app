@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8aab336a.css",
+    "main.js": "/static/js/main.429f9629.js",
+    "static/media/wklogo-outline.png": "/static/media/wklogo-outline.0db4774d8ff510a169b5.png",
+    "index.html": "/index.html",
+    "main.8aab336a.css.map": "/static/css/main.8aab336a.css.map",
+    "main.429f9629.js.map": "/static/js/main.429f9629.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8aab336a.css",
+    "static/js/main.429f9629.js"
+  ]
+}
