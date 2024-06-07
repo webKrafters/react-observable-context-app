@@ -1,6 +1,7 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { connect } from '@webkrafters/react-observable-context';
+import { connect, StoreRef } from '@webkrafters/react-observable-context';
+// import { connect, StoreRef } from 'react-eagleeye';
 
 import ObservableContext, { getDemoInitState } from '../../context';
 
@@ -34,12 +35,26 @@ const Product = ({ prehooks = undefined, type }) => {
 
 	const overridePricing = useCallback( e => setState({ price: Number( e.target.value ) }), [] );
 
+	/** @type {React.MutableRefObj<StoreRef<ReturnType<typeof getDemoInitState>>>} */
+	const ctxRef = useRef();
+	useEffect(() => {
+		console.log( 'OUR CTX REF IS >>>>> ', ctxRef );
+		return ctxRef.current.subscribe(( ...args ) => console.log(
+			'UPDATED STATE WITH THE FOLLWOING ARGS >>>>> ',
+			...args
+		));
+	}, []);
+
+	useEffect(() => {
+		console.log( 'OUR CTX REF IS >>>>> ', ctxRef );
+	});
+
 	return (
 		<div>
 			<div style={{ marginBottom: 10 }}>
 				<label>$ <input onKeyUp={ overridePricing } placeholder="override price here..." /></label>
 			</div>
-			<ObservableContext.Provider prehooks={ prehooks } value={ state }>
+			<ObservableContext.Provider ref={ ctxRef } prehooks={ prehooks } value={ state }>
 				<div style={{
 					borderBottom: '1px solid #333',
 					marginBottom: 10,
