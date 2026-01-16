@@ -16,7 +16,7 @@
     "@webkrafters/data-distillery": "^0.1.1",
     "@webkrafters/get-property": "^2.0.0",
     "@webkrafters/path-dotize": "0.0.2",
-    "@webkrafters/react-observable-context": "^6.0.0-rc.2.1",
+    "@webkrafters/react-observable-context": "^6.0.0-rc.6",
     "lodash.clonedeepwith": "^4.5.0",
     "lodash.isboolean": "^3.0.3",
     "lodash.isempty": "^4.4.0",
@@ -38,7 +38,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "clean-build": "rm -rf dist && vite build",
+    "clean-build": "rm -rf dist && npm run build",
     "preview": "vite preview"
   },
   "version": "0.2.3"

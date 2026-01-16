@@ -1,0 +1,18 @@
+{
+  "index.html": {
+    "file": "assets/index-BEwGyDwC.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "css": [
+      "assets/index-CC8q8XeM.css"
+    ],
+    "assets": [
+      "assets/wklogo-outline-BpDXMJXr.png"
+    ]
+  },
+  "src/wklogo-outline.png": {
+    "file": "assets/wklogo-outline-BpDXMJXr.png",
+    "src": "src/wklogo-outline.png"
+  }
+}

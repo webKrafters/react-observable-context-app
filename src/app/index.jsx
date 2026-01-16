@@ -32,11 +32,11 @@ if( demoType === 'hoc' ) {
 
 const prehooks = {
 	resetState: ( ...args ) => {
-		console.log( 'resetting state with >>>> ', JSON.stringify( args ) );
+		console.log( 'prehook says: resetting state with >>>> ', JSON.stringify( args ) );
 		return true;
 	},
 	setState: ( ...args ) => {
-		console.log( 'merging following into state >>>> ', JSON.stringify( args ) );
+		console.log( 'prehook says: merging following into state >>>> ', JSON.stringify( args ) );
 		return true;
 	}
 };
@@ -66,7 +66,7 @@ const App = () => {
 						<span>@webkrafters/react-observable-context demo</span>
 						<a
 							href="https://www.npmjs.com/package/@webkrafters/react-observable-context"
-							target="blank"
+							rel="no-follow"
 						>
 							Eagle Eye
 						</a>
@@ -94,7 +94,7 @@ const App = () => {
 				</main>
 			</div>
 			<footer>
-				&copy;2022{ year > 2022 ? `-${ year }` : '' } webKrafters. All rights reserved.
+				&copy;2022{ year > 2022 ? `-${ year }` : '' } <a href="https://webkrafters.tech" rel="no-follow">webKrafters</a>. All rights reserved.
 			</footer>
 		</div>
 	);

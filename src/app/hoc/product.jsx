@@ -5,6 +5,8 @@ import { connect, StoreRef } from '@webkrafters/react-observable-context';
 
 import ObservableContext, { getDemoInitState } from '../../context';
 
+import { useExternalObserver } from '../ext-observer';
+
 import CustomerPhoneDisplayComponent from '../../components/customer-phone-display';
 import EditorComponent from '../../components/editor';
 import PriceStickerComponent from '../../components/price-sticker';
@@ -33,28 +35,17 @@ const Product = ({ prehooks = undefined, type }) => {
 		// setState({ ...state, type }); // this will override the context internal state for these values 
 	}, [ type ]);
 
+	// Again notice! not creating a new state object - only a payload for that which has changed.
 	const overridePricing = useCallback( e => setState({ price: Number( e.target.value ) }), [] );
 
-	/** @type {React.MutableRefObj<StoreRef<ReturnType<typeof getDemoInitState>>>} */
-	const ctxRef = useRef();
-	useEffect(() => {
-		console.log( 'OUR CTX REF IS >>>>> ', ctxRef );
-		return ctxRef.current.subscribe(( ...args ) => console.log(
-			'UPDATED STATE WITH THE FOLLWOING ARGS >>>>> ',
-			...args
-		));
-	}, []);
-
-	useEffect(() => {
-		console.log( 'OUR CTX REF IS >>>>> ', ctxRef );
-	});
+	const ctxRef = useExternalObserver();
 
 	return (
 		<div>
 			<div style={{ marginBottom: 10 }}>
 				<label>$ <input onKeyUp={ overridePricing } placeholder="override price here..." /></label>
 			</div>
-			<ObservableContext.Provider ref={ ctxRef } prehooks={ prehooks } value={ state }>
+			<ObservableContext.Provider prehooks={ prehooks } ref={ ctxRef } value={ state }>
 				<div style={{
 					borderBottom: '1px solid #333',
 					marginBottom: 10,
