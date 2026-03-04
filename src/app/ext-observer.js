@@ -1,25 +1,18 @@
 import { useEffect, useRef } from 'react';
 
-import { getDemoInitState } from '../context';
+import { createEagleEye, ObservableContext } from '@webkrafters/react-observable-context';
 
-export function useExternalObserver() {
-	
-	/** @type {React.MutableRefObj<StoreRef>} */
-	const ctxRef = useRef( null );
-	
+export function useExternalObserver( ctx ) {
+
 	useEffect(() => {
 		console.log( 'on context store mount >>> observer says: OUR CTX REF IS >>>>> ', ctxRef );
-		return ctxRef.current.subscribe(( ...args ) => console.log(
+		return ctx.store.subscribe(( ...args ) => console.log(
 			'on context state update >>> observer says: UPDATED STATE WITH THE FOLLOWING ARGS >>>>> ',
 			...args
 		));
 	}, []);
 	
 	useEffect(() => {
-		console.log( 'on context provider update >>> observer says: OUR CTX REF IS >>>>> ', ctxRef );
+		console.log( 'on context provider update >>> observer says: OUR CTX REF IS >>>>> ', ctx );
 	});
-	
-	return ctxRef;
 }
-
-/** @typedef {import('@webkrafters/react-observable-context').StoreRef<ReturnType<typeof getDemoInitState>>} StoreRef */

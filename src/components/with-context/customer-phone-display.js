@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-import { useObservableContext } from '../../context';
+import { useDemoStream } from '../../context';
 
 const CustomerPhoneDisplay = () => {
-	const { data } = useObservableContext({ phone: 'customer.phone' });
+	const { data } = useDemoStream({ phone: 'customer.phone' });
 	useEffect(() => console.log( 'CustomerPhoneDisplay component rendered.....' ));
 	return `Phone: ${ data.phone ?? 'n.a.' }`;
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import ObservableContext, { getDemoInitState } from '../../context';
+import DemoContext from '../../context';
 
 import { useExternalObserver } from '../ext-observer';
 
@@ -11,35 +11,33 @@ import TallyDisplay from '../../components/with-context/tally-display';
 
 const Product = ({ prehooks = undefined, type }) => {
 
-	const [ state, setState ] = useState(() => getDemoInitState( type ));
+	useEffect(() => { DemoContext.prehooks = prehooks }, [ prehooks ]);
 
-	useEffect(() => {
-		setState({ type }); // use this to update only the changed state
-		// setState({ ...state, type }); // this will override the context internal state for these values 
-	}, [ type ]);
+	useEffect(() => DemoContext.store.setState({ type }), [ type ]);
 
-	// Again notice! not creating a new state object - only a payload for that which has changed.
-	const overridePricing = useCallback( e => setState({ price: Number( e.target.value ) }), [] );
+	const overridePricing = useCallback( e => {
+		DemoContext.store.setState({
+			price: Number( e.target.value )
+		})
+	}, [] );
 
-	const ctxRef = useExternalObserver();
+	useExternalObserver( DemoContext );
 
 	return (
 		<div>
 			<div style={{ marginBottom: 10 }}>
 				<label>$ <input onKeyUp={ overridePricing } placeholder="override price here..." /></label>
 			</div>
-			<ObservableContext.Provider prehooks={ prehooks } ref={ ctxRef } value={ state }>
-				<div style={{
-					borderBottom: '1px solid #333',
-					marginBottom: 10,
-					paddingBottom: 5
-				}}>
-					<Editor />
-					<TallyDisplay />
-				</div>
-				<ProductDescription />
-				<PriceSticker />
-			</ObservableContext.Provider>
+			<div style={{
+				borderBottom: '1px solid #333',
+				marginBottom: 10,
+				paddingBottom: 5
+			}}>
+				<Editor />
+				<TallyDisplay />
+			</div>
+			<ProductDescription />
+			<PriceSticker />
 		</div>
 	);
 

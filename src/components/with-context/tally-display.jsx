@@ -2,7 +2,7 @@ import React, { memo, useEffect } from 'react';
 
 import isEmpty from 'lodash.isempty';
 
-import { useObservableContext } from '../../context';
+import { useContextStream } from '../../context';
 
 import CapitalizedDisplay from '../capitalized-display';
 
@@ -15,7 +15,7 @@ const TallyDisplay = ({
 	Resetter = Reset
 }) => {
 
-	const { data: { color, name, price, type } } = useObservableContext({
+	const { data: { color, name, price, type } } = useContextStream({
 		color: 'color',
 		name: 'customer.name',
 		price: 'price',

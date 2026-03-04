@@ -1,12 +1,6 @@
-import {
-	createContext,
-	useContext
-} from '@webkrafters/react-observable-context';
-// } from 'react-eagleeye';
+import { createEagleEye } from '@webkrafters/react-observable-context';
 
-const ObservableContext = createContext();
-
-export const getDemoInitState = type => ({
+export const getDemoInitState = () => ({
 	color: 'Burgundy',
 	customer: {
 		name: {
@@ -16,9 +10,13 @@ export const getDemoInitState = type => ({
 		phone: null
 	},
 	price: 22.5,
-	type
+	type: ''
 });
 
-export const useObservableContext = selectorMap => useContext( ObservableContext, selectorMap );
+export const defaultDemoState = getDemoInitState();
 
-export default ObservableContext;
+const DemoContext = createEagleEye( defaultDemoState );
+
+export cont useDemoStream = DemoContext.useStream;
+
+export default DemoContext;

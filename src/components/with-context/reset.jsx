@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { useObservableContext } from '../../context';
+import { DemoContext } from '../../context';
 
 const Reset = () => {
-	const { resetState } = useObservableContext();
-	useEffect(() => console.log( 'Reset component rendered.....' ));
-	const reset = useCallback(() => resetState([ '@@STATE' ]), [ resetState ]);
+	const reset = useCallback(() => {
+		DemoContext.store.resetState([ '@@STATE' ]), []
+	);
 	return ( <button onClick={ reset }>reset context</button> );
 };
 

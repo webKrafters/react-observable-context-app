@@ -1,23 +1,22 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 
-import { useObservableContext } from '../../context';
-
+import { DemoContext from '../../context'
 const Editor = () => {
 
-	const { setState } = useObservableContext();
-
-	const fNameInputRef = useRef();
-	const lNameInputRef = useRef();
-	const phoneInputRef = useRef();
-	const priceInputRef = useRef();
-	const colorInputRef = useRef();
-	const typeInputRef = useRef();
+	const fNameInputRef = useRef( null );
+	const lNameInputRef = useRef( null );
+	const phoneInputRef = useRef( null );
+	const priceInputRef = useRef( null );
+	const colorInputRef = useRef( null );
+	const typeInputRef = useRef( null );
 
 	const updateColor = useCallback(() => {
-		setState({ color: colorInputRef.current.value });
+		DemoContext.store.setState({
+			color: colorInputRef.current.value
+		});
 	}, []);
 	const updateName = useCallback(() => {
-		setState({
+		DemoContext.store.setState({
 			customer: {
 				name: {
 					first: fNameInputRef.current.value,
@@ -30,13 +29,17 @@ const Editor = () => {
 		let phone = phoneInputRef.current.value;
 		if( phone.length && !/[0-9]{10}/.test( phone ) ) { return }
 		phone = phone.replace( /(.{3})/, '$1-' ).replace( /(.{7})/, '$1-' );
-		setState({ customer: { phone } });
+		DemoContext.store.setState({ customer: { phone } });
 	}, []);
 	const updatePrice = useCallback(() => {
-		setState({ price: Number( priceInputRef.current.value ) });
+		DemoContext.store.setState({
+			price: Number( priceInputRef.current.value )
+		});
 	}, []);
 	const updateType = useCallback(() => {
-		setState({ type: typeInputRef.current.value });
+		DemoContext.store.setState({
+			type: typeInputRef.current.value
+		});
 	}, []);
 
 	useEffect(() => console.log( 'Editor component rendered.....' ));

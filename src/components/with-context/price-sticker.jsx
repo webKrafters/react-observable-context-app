@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
-import { useObservableContext } from '../../context';
+import { useDemoStream } from '../../context';
 
 const PriceSticker = () => {
-	const { data: { p } } = useObservableContext({ p: 'price' });
+	const { data: { p } } = useDemoStream({ p: 'price' });
 	useEffect(() => console.log( 'PriceSticker component rendered.....' ));
 	return (
 		<div style={{ fontSize: 36, fontWeight: 800 }}>
