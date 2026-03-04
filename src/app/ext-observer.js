@@ -10,7 +10,7 @@ export function useExternalObserver() {
 	useEffect(() => {
 		console.log( 'on context store mount >>> observer says: OUR CTX REF IS >>>>> ', ctxRef );
 		return ctxRef.current.subscribe(( ...args ) => console.log(
-			'on context state update >>> observer says: UPDATED STATE WITH THE FOLLWOING ARGS >>>>> ',
+			'on context state update >>> observer says: UPDATED STATE WITH THE FOLLOWING ARGS >>>>> ',
 			...args
 		));
 	}, []);
