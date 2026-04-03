@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { StoreRef } from '@webkrafters/react-observable-context';
-
 import DemoContext from '../../context';
 
 import { useExternalObserver } from '../ext-observer';
@@ -13,17 +11,17 @@ import ProductDescriptionComponent from '../../components/product-description';
 import ResetComponent from '../../components/reset';
 import TallyDisplayComponent from '../../components/tally-display';
 
-const CustomerPhoneDisplay = DemoContext.connect({ phone: 'customer.phone' } )( CustomerPhoneDisplayComponent );
+const CustomerPhoneDisplay = DemoContext.connect({ phone: 'customer.phone' })( CustomerPhoneDisplayComponent );
 const Editor = DemoContext.connect()( EditorComponent );
 const PriceSticker = DemoContext.connect({ p: 'price' } )( PriceStickerComponent );
 const ProductDescription = DemoContext.connect({ c: 'color', t: 'type' } )( ProductDescriptionComponent );
 const Reset = DemoContext.connect()( ResetComponent );
-const TallyDisplay = DemoContext.connect( DemoContext, {
+const TallyDisplay = DemoContext.connect({
 	color: 'color',
 	name: 'customer.name',
 	price: 'price',
 	type: 'type'
-} )( TallyDisplayComponent );
+})( TallyDisplayComponent );
 
 const Product = ({ prehooks = undefined, type }) => {
 
@@ -42,20 +40,19 @@ const Product = ({ prehooks = undefined, type }) => {
 			<div style={{ marginBottom: 10 }}>
 				<label>$ <input onKeyUp={ overridePricing } placeholder="override price here..." /></label>
 			</div>
-				<div style={{
-					borderBottom: '1px solid #333',
-					marginBottom: 10,
-					paddingBottom: 5
-				}}>
-					<Editor />
-					<TallyDisplay
-						PhoneDisplay={ CustomerPhoneDisplay }
-						Resetter={ Reset }
-					/>
-				</div>
-				<ProductDescription />
-				<PriceSticker />
+			<div style={{
+				borderBottom: '1px solid #333',
+				marginBottom: 10,
+				paddingBottom: 5
+			}}>
+				<Editor />
+				<TallyDisplay
+					PhoneDisplay={ CustomerPhoneDisplay }
+					Resetter={ Reset }
+				/>
 			</div>
+			<ProductDescription />
+			<PriceSticker />
 		</div>
 	);
 

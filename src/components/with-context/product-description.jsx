@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDemoStream } from '../../context';
 
 const ProductDescription = () => {
-	const { data: { c, t} } = useDemoStrea({ c: 'color', t: 'type' });
+	const { data: { c, t } } = useDemoStream({ c: 'color', t: 'type' });
 	useEffect(() => console.log( 'ProductDescription component rendered.....' ));
 	return (
 		<div style={{ fontSize: 24 }}>

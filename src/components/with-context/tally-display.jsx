@@ -1,8 +1,8 @@
-import React, { memo, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import isEmpty from 'lodash.isempty';
 
-import { useContextStream } from '../../context';
+import { useDemoStream } from '../../context';
 
 import CapitalizedDisplay from '../capitalized-display';
 
@@ -15,7 +15,7 @@ const TallyDisplay = ({
 	Resetter = Reset
 }) => {
 
-	const { data: { color, name, price, type } } = useContextStream({
+	const { data: { color, name, price, type } } = useDemoStream({
 		color: 'color',
 		name: 'customer.name',
 		price: 'price',

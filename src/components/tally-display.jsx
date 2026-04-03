@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import isEmpty from 'lodash.isempty';
 
@@ -7,7 +7,7 @@ import CustomerPhoneDisplay from './customer-phone-display';
 
 import Reset from './reset';
 
-const TallyDisplay = memo(({
+const TallyDisplay = ({
 	data: { color, name, price, type },
 	PhoneDisplay = CustomerPhoneDisplay,
 	Resetter = Reset
@@ -48,8 +48,7 @@ const TallyDisplay = memo(({
 			</div>
 		</div>
 	);
-
-});
+};
 
 TallyDisplay.displayName = 'TallyDisplay';
 

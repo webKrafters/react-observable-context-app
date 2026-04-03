@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 
-import { DemoContext from '../../context'
+import DemoContext from '../../context';
+
 const Editor = () => {
 
 	const fNameInputRef = useRef( null );

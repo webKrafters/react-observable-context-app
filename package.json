@@ -16,11 +16,15 @@
     "@webkrafters/data-distillery": "^0.1.1",
     "@webkrafters/get-property": "^2.0.0",
     "@webkrafters/path-dotize": "0.0.2",
-    "@webkrafters/react-observable-context": "^7.0.0-rc.1",
+    "@webkrafters/react-observable-context": "^7.0.4",
+    "@webkrafters/timed-map": "^2.0.0",
+    "lodash.clonedeep": "^4.5.0",
     "lodash.clonedeepwith": "^4.5.0",
     "lodash.isboolean": "^3.0.3",
     "lodash.isempty": "^4.4.0",
     "lodash.isequal": "^4.5.0",
+    "lodash.isinteger": "^4.0.4",
+    "lodash.isobject": "^3.0.2",
     "lodash.isplainobject": "^4.0.6",
     "lodash.omit": "^4.5.0",
     "react": "16.8.0",
@@ -41,5 +45,5 @@
     "clean-build": "rm -rf dist && npm run build",
     "preview": "vite preview"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

@@ -17,6 +17,6 @@ export const defaultDemoState = getDemoInitState();
 
 const DemoContext = createEagleEye( defaultDemoState );
 
-export cont useDemoStream = DemoContext.useStream;
+export const useDemoStream = DemoContext.useStream;
 
 export default DemoContext;
